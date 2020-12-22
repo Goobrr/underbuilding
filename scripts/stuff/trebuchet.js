@@ -1,8 +1,4 @@
-const trebuchetBullet = extend(ArtilleryBulletType, {
-  hit(b){
-    this.super$hit(b);
-  },
-        
+const trebuchetBullet = extend(ArtilleryBulletType, {   
   despawned(b){
     let x = Mathf.round(b.x) / 8;
     let y = Mathf.round(b.y) / 8;
