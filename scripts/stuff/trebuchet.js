@@ -30,10 +30,11 @@ const trebuchetBullet = extend(ArtilleryBulletType, {
 });
 
 // Might rename later
-const trebuchet = extend(ItemTurret, "trebuchet", {});
+const trebuchet = extend(ItemTurret, "trebuchet", {
+  inaccuracy: 7.5,
+  size: 3,
+  reloadTime: 20,
+  range: 200,
+  shootSound: Sounds.artillery
+});
 trebuchet.ammo(Items.silicon, trebuchetBullet);
-trebuchet.inaccuracy = 7.5;
-trebuchet.size = 3;
-trebuchet.reloadTime = 20;
-trebuchet.range = 200;
-trebuchet.shootSound = Sounds.artillery;
