@@ -35,6 +35,7 @@ const trebuchet = extend(ItemTurret, "trebuchet", {
   size: 3,
   reloadTime: 20,
   range: 200,
+  buildVisibility: BuildVisibility.shown,
   shootSound: Sounds.artillery
 });
 trebuchet.ammo(Items.silicon, trebuchetBullet);
