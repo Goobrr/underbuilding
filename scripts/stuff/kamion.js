@@ -1,4 +1,12 @@
-const kamion = extendContent(UnitType, "kamion", {})
+const kamion = extendContent(UnitType, "kamion", {
+   engineOffset: 5.5,
+   speed: 5,
+   health: 70,
+   flying: true,
+   drag: 0.02,
+   accel: 0.1,
+   localizedName: "kamion"
+})
 kamion.constructor = () => extend(UnitEntity, {
    killed(){
       //no fall animation because no
@@ -7,18 +15,14 @@ kamion.constructor = () => extend(UnitEntity, {
       this.destroy();
    }
 });
-kamion.engineOffset = 5.5;
-kamion.speed = 5;
-kamion.health = 70;
-kamion.flying = true;
-kamion.drag = 0.02;
-kamion.accel = 0.1;
 
-const kamionWeapon = new Weapon();
-kamionWeapon.reload = 24;
-kamionWeapon.ejectEffect = Fx.none;
-kamionWeapon.shootCone = 180;
-kamionWeapon.shootSound = Sounds.explosion;
+const kamionWeapon = extend(Weapon, {
+ reload: 24,
+ ejectEffect:Fx.none,
+ shootCone: 180,
+ shootSound: Sounds.explosion
+});
+
 kamionWeapon.bullet = extend(BombBulletType, {
    hitEffect: Fx.pulverize,
    lifetime: 10,
