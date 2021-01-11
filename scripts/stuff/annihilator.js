@@ -14,6 +14,12 @@ const laserOrb = new Effect(30, e => {
   Fill.circle(e.x, e.y, e.fout() * e.data.hitSize)
 });
 
+const dst = (x1, x2, y1, y2) => {
+  var dx = x2 - x1;
+  var dy = y2 - y1;
+  return dx * dx + dy * dy;
+};
+
 const annihilator = extend(Block, "annihilator", {
   buildVisibility: BuildVisibility.shown,
   size: 3,
@@ -29,7 +35,7 @@ annihilator.buildType = () => extend(Building, {
     this.super$update();
     Groups.unit.each( u => {
       if(u.team != this.team){
-           if( Mathf.dst(this.x, this.y, u.x, u.y) < 160 ){
+           if( dst(this.x, this.y, u.x, u.y) < 160 * 160 ){
            laserBeam.at(this.x, this.y, 0, u);
            laserOrb.at(u.x, u.y, 0, u);
            u.destroy();
@@ -38,7 +44,7 @@ annihilator.buildType = () => extend(Building, {
     });
     Groups.build.each( t => {
       if(t.team != this.team){
-           if( Mathf.dst(this.x, this.y, t.x, t.y) < 640 ){
+           if( dst(this.x, this.y, t.x, t.y) < 640 * 640 ){
            laserBeam.at(this.x, this.y, 0, t);
            t.kill();
          };
