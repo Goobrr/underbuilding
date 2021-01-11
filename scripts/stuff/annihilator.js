@@ -44,7 +44,7 @@ annihilator.buildType = () => extend(Building, {
     });
     Groups.build.each( t => {
       if(t.team != this.team){
-           if( Mathf.dst(this.x, this.y, t.x, t.y) < 640 ){
+           if( dst(this.x, this.y, t.x, t.y) < 640 * 640 ){
            laserBeam.at(this.x, this.y, 0, t);
            t.kill();
          };
